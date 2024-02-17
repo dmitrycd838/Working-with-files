@@ -11,11 +11,12 @@ def interface():
             '1. Добавить контакт\n'
             '2. Вывести на экран\n'
             '3. Поиск контакта\n'
-            '4. Выход'
-             )
+            '4. Копировать контакт\n'
+            '5. Выход'
+        )
         print()
         var = input('Выберите вариант действия: ')
-        while var not in ('1', '2', '3', '4'):
+        while var not in ('1', '2', '3', '4', '5'):
             print('Некорректный ввод')
             var = input('Выберите вариант действия: ')
         print()
@@ -28,5 +29,7 @@ def interface():
             case '3':
                 search_contact()
             case '4':
+                copy_contact()
+            case '5':
                 print('До свидания')
         print()

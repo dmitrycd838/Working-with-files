@@ -36,17 +36,22 @@
 def lastname_input():
     return input('Введите фамилию контакта: ').title()
 
+
 def name_input():
     return input('Введите имя контакта: ').title()
+
 
 def patronymic_input():
     return input('Введите отчество контакта: ').title()
 
+
 def phone_input():
     return input('Введите телефон контакта: ')
 
+
 def address_input():
     return input('Введите город контакта: ').title()
+
 
 def create_contact():
     lastname = lastname_input()
@@ -61,6 +66,8 @@ def add_contact():
     contact_str = create_contact()
     with open('telephone_directory.txt', 'a', encoding='utf-8') as file:
         file.write(contact_str)
+
+
 def print_contacts():
     with open('telephone_directory.txt', 'r', encoding='utf-8') as file:
         contacts_str_search = file.read()
@@ -97,6 +104,27 @@ def search_contact():
         if search in lst_contact[i_var]:
             print(str_contact)
 
+
+def copy_contact():
+    with open('C:\directory\pythonProject1\phonebook\telephone_directory.txt', 'r', encoding='utf-8') as file:
+        all_contacts_str = file.read()
+        contacts_list = all_contacts_str.rstrip().split('\n')
+
+    for n, contact in enumerate(contacts_list, 1):
+        print(n, contact)
+    print()
+
+    one_cont_copy = input('Введите контакт по номеру для копирования: ')
+    print()
+
+    for n, contact in enumerate(contacts_list, 1):
+        if n == one_cont_copy:
+            print(n, contact)
+
+            with open('C:\directory\pythonProject1\phonebook\copy.txt', 'a') as file:
+                file.write(f'{contact}')
+
+
 def interface():
     with open('telephone_directory.txt', 'a', encoding='utf-8'):
         pass
@@ -108,11 +136,12 @@ def interface():
             '1. Добавить контакт\n'
             '2. Вывести на экран\n'
             '3. Поиск контакта\n'
-            '4. Выход'
-             )
+            '4. Копировать контакт\n'
+            '5. Выход'
+        )
         print()
         var = input('Выберите вариант действия: ')
-        while var not in ('1', '2', '3', '4'):
+        while var not in ('1', '2', '3', '4', '5'):
             print('Некорректный ввод')
             var = input('Выберите вариант действия: ')
         print()
@@ -125,30 +154,11 @@ def interface():
             case '3':
                 search_contact()
             case '4':
+                copy_contact()
+            case '5':
                 print('До свидания')
         print()
 
 
 if __name__ == '__main__':
     interface()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

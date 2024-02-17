@@ -48,3 +48,22 @@ def search_contact():
         lst_contact = str_contact.replace(':', '').split()
         if search in lst_contact[i_var]:
             print(str_contact)
+
+def copy_contact():
+    with open('C:\directory\pythonProject1\phonebook\telephone_directory.txt', 'r', encoding='utf-8') as file:
+        all_contacts_str = file.read()
+        contacts_list = all_contacts_str.rstrip().split('\n')
+
+    for n, contact in enumerate(contacts_list, 1):
+        print(n, contact)
+    print()
+
+    one_cont_copy = input('Введите контакт по номеру для копирования: ')
+    print()
+
+    for n, contact in enumerate(contacts_list, 1):
+        if n == one_cont_copy:
+            print(n, contact)
+
+            with open('C:\directory\pythonProject1\phonebook\copy.txt', 'a') as file:
+                file.write(f'{contact}')

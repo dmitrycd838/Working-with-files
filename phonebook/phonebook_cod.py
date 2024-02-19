@@ -72,7 +72,7 @@ def print_contacts():
     with open('telephone_directory.txt', 'r', encoding='utf-8') as file:
         contacts_str_search = file.read()
     # print([contacts_str_search])
-    list_contacts = contacts_str_search.rstrip().split('\n\n')
+        list_contacts = contacts_str_search.rstrip().split('\n\n')
     for n, cont in enumerate(list_contacts, 1):
         print(n, cont)
 
@@ -106,23 +106,22 @@ def search_contact():
 
 
 def copy_contact():
-    with open('C:\directory\pythonProject1\phonebook\telephone_directory.txt', 'r', encoding='utf-8') as file:
+    with open(r'C:\directory\pythonProject1\phonebook\telephone_directory.txt', 'r', encoding='utf-8') as file:
         all_contacts_str = file.read()
-        contacts_list = all_contacts_str.rstrip().split('\n')
+        contacts_list = all_contacts_str.rstrip().split('\n\n')
 
     for n, contact in enumerate(contacts_list, 1):
         print(n, contact)
+    # print()
+
+    one_cont_copy = int(input('Введите контакт по номеру для копирования: '))
     print()
 
-    one_cont_copy = input('Введите контакт по номеру для копирования: ')
-    print()
-
-    for n, contact in enumerate(contacts_list, 1):
-        if n == one_cont_copy:
-            print(n, contact)
-
-            with open('C:\directory\pythonProject1\phonebook\copy.txt', 'a') as file:
-                file.write(f'{contact}')
+    # for n, contact in enumerate(contacts_list, 1):
+    #     if n == one_cont_copy:
+    #         print(n, contact)
+    with open('C:\\directory\\pythonProject1\\phonebook\\copy.txt', 'a', encoding='utf-8') as file:
+        file.write (f'\n{contacts_list[one_cont_copy - 1]}\n')
 
 
 def interface():
@@ -130,7 +129,7 @@ def interface():
         pass
 
     var = 0
-    while var != '4':
+    while var != '5':
         print(
             'Выберите возможные варианты:\n'
             '1. Добавить контакт\n'

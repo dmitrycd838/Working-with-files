@@ -5,7 +5,7 @@ def interface():
         pass
 
     var = 0
-    while var != '4':
+    while var != '5':
         print(
             'Выберите возможные варианты:\n'
             '1. Добавить контакт\n'
